@@ -1,6 +1,9 @@
 class CustomersController < ApplicationController
   def index
-    @customers = Customer.all
+    # @customers = Customer.all
+    # #gemを使いたい
+    # @customers = Customer.page(params[:page])
+    @customers = Customer.page(params[:page])
   end
 
   def new

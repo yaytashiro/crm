@@ -2,6 +2,7 @@
 <p>お客様情報が表示されます。</p>
 <table class="table table-striped">
   <thead>
+    <th>会社名</th>
     <th>姓</th>
     <th>名</th>
     <th>電子メール</th>
@@ -10,6 +11,7 @@
   <tbody>
     <% @customers.each do |customer| %>
       <tr>
+        <td><%= customer.company.name %></td>
         <td><%= customer.family_name %></td>
         <td><%= customer.given_name %></td>
         <td><%= customer.email %></td>
@@ -17,5 +19,6 @@
       </tr>
     <% end %>
   </tbody>
+  <%= paginate @customers %>
 </table>
 
