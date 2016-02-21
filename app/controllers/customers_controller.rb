@@ -4,6 +4,9 @@ class CustomersController < ApplicationController
 #set_customerを：実装する
 before_action :set_customer, only: [:show, :edit, :upadte, :destroy]
 before_action :set_company, only: [:new, :edit]
+#deviseが持ってるアクション
+before_action :authenticate_user!
+
   def index
     # @customers = Customer.all
     # #gemを使いたい
