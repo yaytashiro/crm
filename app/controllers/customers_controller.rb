@@ -1,4 +1,9 @@
 class CustomersController < ApplicationController
+#アクションの前に実行したいものを記述する
+#after_actionもある
+#set_customerを：実装する
+before_action :set_customer, only: [:show, :edit, :upadte, :destroy]
+
   def index
     # @customers = Customer.all
     # #gemを使いたい
@@ -23,11 +28,9 @@ class CustomersController < ApplicationController
   end
 
   def edit
-    @customer = Customer.find(params[:id])
   end
 
   def update
-    @customer = Customer.find(params[:id])
     if @customer.save
         redirect_to @customer
     else
@@ -36,11 +39,9 @@ class CustomersController < ApplicationController
   end
 
   def show
-    @customer = Customer.find(params[:id])
   end
 
   def destroy
-    @customer = Customer.find(params[:id])
     @customer.destroy
     redirect_to customers_url
   end
@@ -52,5 +53,9 @@ class CustomersController < ApplicationController
         :given_name,
         :email
       )
+    end
+
+    def set_customer
+      @customer = Customer.find(params[:id])
     end
 end
