@@ -3,6 +3,8 @@
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
+  <div class="col-sm-8 col-sm-offset-2">
+
       <div class="form-group">
         <%= f.label :email, "電子メール" %><br />
         <%= f.email_field :email, autofocus: true, class: "form-control" %>
@@ -25,5 +27,5 @@
         <%= f.submit "新規登録" %>
       </div>
 <% end %>
-
+</div>
 <%= render "devise/shared/links" %>
