@@ -3,7 +3,7 @@ class CustomersController < ApplicationController
 #after_actionもある
 #set_customerを：実装する
 before_action :set_customer, only: [:show, :edit, :upadte, :destroy]
-
+before_action :set_company, only: [:new, :edit]
   def index
     # @customers = Customer.all
     # #gemを使いたい
@@ -51,11 +51,17 @@ before_action :set_customer, only: [:show, :edit, :upadte, :destroy]
       params.require(:customer).permit(
         :family_name,
         :given_name,
-        :email
+        :email,
+        :company_id
       )
     end
 
     def set_customer
       @customer = Customer.find(params[:id])
     end
+    
+    def set_company
+      @companies = Company.all
+    end
+
 end

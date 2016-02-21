@@ -45,6 +45,8 @@ group :development do
   gem 'spring'
 
   gem 'kaminari'
+
+  gem 'devise'
 end
 
 
