@@ -42,6 +42,8 @@ before_action :authenticate_user!, only:[:new, :create, :edit, :update, :destroy
   end
 
   def show
+    @comment = Comment.new
+    @comments = @customer.comments
   end
 
   def destroy

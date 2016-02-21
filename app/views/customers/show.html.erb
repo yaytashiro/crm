@@ -1,3 +1,5 @@
+<h1>顧客詳細</h1>
+
 <div class="row">
 	<div class="col-md-12">
 		<dl>
@@ -11,4 +13,23 @@
 			</dd>
 		</dl>		
 	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<h2>コメント一覧</h2>
+		<% @comments.each do |comment|%>
+			<p><%= comment.body %> <%= comment.created_at %> <%= link_to 'コメントを削除する', comment_path(comment), method: :delete%></p>
+		<% end %>
+	</div>
+<div class="col-md-12">
+	<%= form_for @comment, url:{ controller: :comments, action: :create} do |f|%>
+	<div class="form-group">
+		<%= f.label :body, '対応内容'%><br>
+		<%= f.text_area :body, class:"form-control"%>
+	</div>
+	<%= f.hidden_field :customer_id, value: @customer.id%>
+	<%= f.submit%>
+	<% end%>
+</div>
+	
 </div>
